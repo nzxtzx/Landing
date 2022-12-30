@@ -37,12 +37,6 @@ html.locked{
     box-shadow:  0px 1px 2px #000;
 }
 
-.nav.scrolled.changed{
-    background: #263238;
-    box-shadow:  none;
-    transition: 0.3s;
-}
-
 .nav.scrolled .nav-link{
     color: #000;
     transition: 0.3s;
@@ -274,7 +268,6 @@ html.locked{
         width: 100%;
         overflow: hidden;
     }
-
     
     .nav-menu__list {
         display: flex;

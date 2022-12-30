@@ -4,6 +4,8 @@
     const menu = document.querySelector('.nav-menu');
     const menuList = document.querySelector('.nav-menu__list');
     const lock = document.querySelector('html');
+    const nav = document.querySelector('.nav');
+    const logo = document.querySelector('.nav-logo');
 
         menuButton.addEventListener('click', function(){
             menuButton.classList.toggle('is-active')
@@ -13,6 +15,7 @@
                 menuButton.classList.add('color')
                 menuList.classList.add('is-active')
                 lock.classList.add('locked')
+                nav.classList.remove("scrolled")
             }
 
             else {
@@ -22,9 +25,6 @@
             }
 
         });
-
-        const nav = document.querySelector('.nav');
-        const logo = document.querySelector('.nav-logo');
 
         const onScroll = () => {
         
@@ -39,43 +39,48 @@
             nav.classList.remove("scrolled");
             logo.classList.remove("colored");
           }
-
-          if (nav.classList.contains("scrolled")){
-            menuButton.addEventListener('click', function(){
-                nav.classList.toggle("changed")
-            })
-        }
         }
         
         window.addEventListener('scroll', onScroll);
 
+        if (nav.classList.contains("scrolled")){
+            menuButton.addEventListener('click', function(){
+                nav.classList.toggle("scrolled")
+            })
+            
+        }
+
+        else {
+            nav.classList.remove("changed")
+        }
 
         let links = document.querySelectorAll('body a[href*="#"]');
 
         for (link of links){
 
             if(link){
-
-                
-            if (menuButton.classList.contains('is-active')){
-                menu.classList.remove('is-active')
-                menuList.classList.remove('is-active')
-                nav.classList.remove("scrolled")
-            }
-            
                 link.addEventListener('click', function(e){
+
+                    menuButton.classList.contains('is-active')
+                        menu.classList.toggle('is-active')
+                        menuList.classList.toggle('is-active')
+                        nav.classList.remove("scrolled")
+                        lock.classList.remove('locked')
+                    
+
                     e.preventDefault();
                     linkId = this.getAttribute('href');
                     console.log(linkId)
-
                     document.querySelector(linkId).scrollIntoView({
+                        
                         behavior: "smooth",
                         block: "start"
                     });
+
                 });
             }
 
         }
-
+        
 
 /* nav, menu */
